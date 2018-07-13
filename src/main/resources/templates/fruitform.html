@@ -2,9 +2,59 @@
 <html lang="en" xmlns:th="www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>fruits</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
 </head>
 <body>
+<div>
+    <a href="/">Home</a><br>
+</div>
+<div class="container jumbotron">
+    <h1 class="text-center">Search Fruits</h1>
+    <div class="col-md-6 col-md-offset-3">
+        <form th:action="@{/process}" method="post" action="#">
+            <div>Enter Fruits <span class="text-success"></span> to search</div>
+            <label>Fruits Name: </label><input type="text" name="name"/>
+                    </form><br>
 
+        <form method="POST" action="/add" th:object="${actor}"
+              enctype="multipart/form-data">
+           <!-- Fruit Name: <input type="text" th:field="*{name}" />-->
+
+            <input type="file" name="file"/>Choose Image<br/><br/>
+            <input type="submit" name="Submit"/>
+
+        </form>
+
+    </div><br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Fruits Name</th>
+            <th>Image of Fruits</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="list:${listResult}">
+            <td th:text="${list.name}"></td>
+            <td >
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="${list.image}" alt="image">
+
+            </div>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</div>
 </body>
 </html>

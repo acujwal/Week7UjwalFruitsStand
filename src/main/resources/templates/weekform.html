@@ -3,9 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>week</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+
 </head>
 <body>
+<div>
+    <a href="/">Home</a><br>
+</div>
+<div class="container jumbotron">
+    <h1 class="text-center">Enter days of Week </h1>
+    <div class="col-md-6 col-md-offset-3">
+        <form th:action="@{/processdays}" method="post" action="#">
+            <div>Enter Days <span class="text-success"></span> to search for</div>
+            <label>Open Days: </label><input type="text" name="days"/><br>
+            <label>Add Fruits: </label><input type="text" name="fruit"/><br><br>
+
+<div class="row">
+            <label>Open Time: </label><input type="text" name="opentime"/>
+            <form class="form-inline">
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"></label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>AM</option>
+                    <option value="">PM</option>
+                </select></form>
+    </div><br>
+<div class="row">
+            <label>Close Time:</label> <input type="text" name="closetime"/>
+            <form class="form-inline">
+                <label class="my-1 mr-2" for="inlineFormCustomSelectPref"></label>
+                <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>AM</option>
+                    <option value="">PM</option>
+                </select></form>
+</div><br>
+
+            <input type="submit" name="Submit"/>
+
+        </form>
+
+    </div>
+    <br>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Days</th>
+            <th>Name of fruits</th>
+            <th>Open Time</th>
+            <th>Close Time</th>
 
 
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="list:${listResult}">
+            <td th:text="${list.days}"></td>
+            <td th:text="${list.opentime}"></td>
+            <td th:text="${list.closetime}"></td>
+                    </tr>
+        </tbody>
+
+    </table>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+</div>
 </body>
 </html>
